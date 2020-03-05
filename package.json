@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack -d --watch & live-server ./client/dist",
     "start": "nodemon server/index.js"
   },
   "author": "Beth Johnson",
@@ -14,6 +14,8 @@
     "babel-loader": "^6.3.2",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.23.0",
+    "live-server": "^1.2.1",
+    "nodemon": "^2.0.2",
     "webpack": "^2.2.1"
   },
   "dependencies": {
