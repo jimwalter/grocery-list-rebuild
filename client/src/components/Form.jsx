@@ -12,14 +12,16 @@ class Form extends React.Component{
 
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.clearForm = this.clearForm.bind(this);
 
   }
 
+
+
   handleFormSubmit(event) {
-    event.preventDefault();
-    // console.log(this.props);
-    // console.log('STATE: ', this.state);
     this.props.addGroceryItem(this.state);
+    this.clearForm();
+    event.preventDefault();
   }
 
 
@@ -31,6 +33,12 @@ class Form extends React.Component{
     })
   }
 
+  clearForm(){
+    this.setState({
+      name: '',
+      quantity: ''
+    })
+  }
 
   render() {
     return(
