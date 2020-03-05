@@ -36,10 +36,22 @@ class App extends React.Component{
         }
       ]
     }
+
+    this.addGroceryItem = this.addGroceryItem.bind(this);
   }
 
   componentDidMount() {
     console.log('App Mounted');
+  }
+
+  addGroceryItem(groceryObj) {
+    groceryObj.id = this.state.groceries.length + 1;
+    console.log("ADDING: ", groceryObj)
+    let oldStateGroc = this.state.groceries;
+    this.setState({
+      groceries: oldStateGroc.concat(groceryObj)
+    }, () => console.log(this.state))
+
   }
 
   render() {
@@ -47,7 +59,7 @@ class App extends React.Component{
 
     return (
       <div>
-        <Form />
+        <Form addGroceryItem={this.addGroceryItem} />
         <GroceryList groceries={this.state.groceries} />
       </div>
     )

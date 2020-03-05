@@ -16,8 +16,10 @@ class Form extends React.Component{
   }
 
   handleFormSubmit(event) {
-    console.log("submitted")
     event.preventDefault();
+    // console.log(this.props);
+    // console.log('STATE: ', this.state);
+    this.props.addGroceryItem(this.state);
   }
 
 
