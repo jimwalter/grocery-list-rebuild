@@ -4,31 +4,43 @@ import Header from './Header.jsx';
 class Form extends React.Component{
 
   constructor(props) {
-    console.log('Form Constructed');
     super(props)
     this.state = {
       name: '',
       quantity: ''
     }
+
+    this.handleFormChange = this.handleFormChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+
   }
 
-  componentDidMount() {
-    console.log('Form Mounted');
+  handleFormSubmit(event) {
+    console.log("submitted")
+    event.preventDefault();
   }
+
+
+  handleFormChange(event) {
+    let key = event.target.name;
+    let value = event.target.value;
+    this.setState({
+      [key]: value
+    })
+  }
+
 
   render() {
-    console.log('Form Rendered');
-
     return(
       <div>
         <img src="grocery-bags.png"/>
         <Header />
-          <form>
+          <form onSubmit={this.handleFormSubmit}>
             <label> Item
-              <input name="item" value=""/>
+              <input name="name" onChange={this.handleFormChange} value={this.state.name}/>
             </label>
             <label> Qunatity
-              <input name="quantity" value=""/>
+              <input name="quantity" onChange={this.handleFormChange} value={this.state.quantity}/>
             </label>
             <button>Add Grocery</button>
           </form>
