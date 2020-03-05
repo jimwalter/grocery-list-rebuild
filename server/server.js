@@ -6,7 +6,7 @@ const PORT = 3000;
 
 app.use(express.static('./client/dist'));
 
-
+// app.get('/', console.log('get got'));
 
 
 
