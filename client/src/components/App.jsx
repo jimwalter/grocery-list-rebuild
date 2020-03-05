@@ -5,6 +5,7 @@ import GroceryList from './GroceryList.jsx';
 
 class App extends React.Component{
   constructor(props) {
+    console.log('App Constrcuted');
     super(props)
     this.state = {
       groceries: [
@@ -37,7 +38,13 @@ class App extends React.Component{
     }
   }
 
+  componentDidMount() {
+    console.log('App Mounted');
+  }
+
   render() {
+    console.log('App Rendered');
+
     return (
       <div>
         <Form />

@@ -2,7 +2,9 @@ import React from 'react';
 import Header from './Header.jsx';
 
 class Form extends React.Component{
+
   constructor(props) {
+    console.log('Form Constructed');
     super(props)
     this.state = {
       name: '',
@@ -10,8 +12,13 @@ class Form extends React.Component{
     }
   }
 
+  componentDidMount() {
+    console.log('Form Mounted');
+  }
 
   render() {
+    console.log('Form Rendered');
+
     return(
       <div>
         <img src="grocery-bags.png"/>
