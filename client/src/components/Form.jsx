@@ -19,9 +19,23 @@ class Form extends React.Component{
 
 
   handleFormSubmit(event) {
-    this.props.addGroceryItem(this.state);
-    this.clearForm();
     event.preventDefault();
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state),
+    }
+    fetch('http://localhost:3000/api/groceries', options)
+    .then(results => results.json())
+    .then(data => {
+      // console.log('this DATA: ', data)
+      this.props.addGroceryItem(this.state);
+      this.clearForm();
+    })
+    .catch(err => console.log(err));
   }
 
 

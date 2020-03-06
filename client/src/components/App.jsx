@@ -9,22 +9,32 @@ class App extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      groceries: Groceries
+      groceries: []
     }
 
     this.addGroceryItem = this.addGroceryItem.bind(this);
+    this.getAllGroceryItems = this.getAllGroceryItems.bind(this);
   }
 
-  componentDidMount() {
 
+  componentDidMount() {
+    this.getAllGroceryItems();
+  }
+
+
+  getAllGroceryItems(){
+    fetch('http://localhost:3000/api/groceries')
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        groceries: data
+      });
+    })
+    .catch(err => console.log(err))
   }
 
   addGroceryItem(groceryObj) {
-    groceryObj.id = this.state.groceries.length + 1;
-    let oldStateGroc = this.state.groceries;
-    this.setState({
-      groceries: oldStateGroc.concat(groceryObj)
-    })
+    this.getAllGroceryItems();
   }
 
   render() {
